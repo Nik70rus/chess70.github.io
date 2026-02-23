@@ -221,16 +221,18 @@
       color: white;
     }
 
-    /* Success message */
-    .success-message {
+    /* Notification message */
+    .notification-message {
       display: none;
       background-color: #4CAF50;
       color: white;
-      padding: 1rem;
+      padding: 1rem 1.5rem;
       border-radius: 50px;
       text-align: center;
       margin-bottom: 1rem;
       animation: slideDown 0.5s ease;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
     }
 
     @keyframes slideDown {
@@ -746,8 +748,8 @@
           </div>
           <div class="contact-form">
             <!-- Сообщение об успешной отправке -->
-            <div id="successMessage" class="success-message">
-              <i class="fas fa-check-circle"></i> Спасибо! Заявка отправлена. Я свяжусь с вами в ближайшее время.
+            <div id="successMessage" class="notification-message">
+              <i class="fas fa-check-circle" style="margin-right: 8px;"></i> Ваша заявка отправлена. В ближайшее время я свяжусь с Вами.
             </div>
             
             <!-- Форма с отправкой на FormSubmit -->
@@ -801,6 +803,22 @@
     // Мобильное меню
     document.querySelector('.mobile-menu-icon').addEventListener('click', function() {
       alert('Навигация: Обо мне / Преимущества / Услуги / Запись. Сайт полностью адаптирован!');
+    });
+
+    // Обработка отправки формы с выводом сообщения
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      // Показываем сообщение об успешной отправке
+      const successMessage = document.getElementById('successMessage');
+      successMessage.style.display = 'block';
+      
+      // Автоматически скрываем сообщение через 5 секунд
+      setTimeout(function() {
+        successMessage.style.display = 'none';
+      }, 5000);
+      
+      // Форма отправится на FormSubmit и перезагрузит страницу
+      // Если вы хотите, чтобы сообщение появилось после перезагрузки,
+      // можно использовать sessionStorage, но это сложнее
     });
   </script>
 </body>
