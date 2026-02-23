@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лада Кляшева | Тренер по шахматам для начинающих</title>
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Montserrat & Open Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f9fafc;
+      color: #1e2b3a;
+      line-height: 1.5;
+    }
+
+    h1, h2, h3, .logo, .nav-links a, .btn {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 20, 30, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #1e3c4f;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #b88b4a;
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1e3c4f;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover {
+      color: #b88b4a;
+      border-bottom-color: #b88b4a;
+    }
+
+    .mobile-menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      color: #1e3c4f;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #f0f5fa 0%, #e7eef5 100%);
+      padding: 3.5rem 0;
+      border-bottom: 1px solid #dbe4ec;
+    }
+
+    .hero .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .hero-content {
+      flex: 1 1 400px;
+    }
+
+    .hero-content h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #153243;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-content .highlight {
+      color: #b88b4a;
+      font-size: 1.6rem;
+      font-weight: 600;
+      display: block;
+      margin-top: 0.3rem;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      margin: 1.5rem 0 2rem;
+      color: #2c4a5e;
+      max-width: 550px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1e3c4f;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: #4f6779;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .photo-frame {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #cfdde9, #b0c4d9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 25px 35px -10px rgba(0, 30, 50, 0.2);
+      border: 4px solid white;
+    }
+
+    .photo-frame i {
+      font-size: 10rem;
+      color: #2b5a7a;
+      opacity: 0.9;
+      text-shadow: 2px 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 16px -6px rgba(184, 139, 74, 0.3);
+    }
+
+    .btn-primary {
+      background-color: #b88b4a;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #a07438;
+      transform: scale(1.02);
+      box-shadow: 0 12px 20px -8px #a07438;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid #b88b4a;
+      color: #153243;
+      margin-left: 1rem;
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background-color: #b88b4a;
+      color: white;
+    }
+
+    /* Section general */
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #153243;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #b88b4a;
+      margin: 0.7rem auto 0;
+      border-radius: 4px;
+    }
+
+    /* About */
+    .about-text {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.2rem;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      border: 1px solid #eaf0f5;
+    }
+
+    .about-text p {
+      margin-bottom: 1.2rem;
+    }
+
+    .about-text i {
+      color: #b88b4a;
+      margin-right: 0.3rem;
+    }
+
+    /* Features / почему я */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 2.2rem 1.5rem;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 30, 40, 0.04);
+      transition: transform 0.2s;
+      border: 1px solid #e2eef9;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: #b88b4a;
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: #b88b4a;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.7rem;
+      color: #153243;
+    }
+
+    .feature-card p {
+      color: #3d5b70;
+    }
+
+    /* Prices / услуги */
+    .prices-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .price-card {
+      background: white;
+      border-radius: 40px;
+      padding: 2.5rem 1.8rem;
+      box-shadow: 0 15px 30px rgba(0, 30, 40, 0.05);
+      text-align: center;
+      border: 1px solid #dbe4ec;
+      transition: all 0.2s;
+    }
+
+    .price-card.popular {
+      border: 2px solid #b88b4a;
+      transform: scale(1.02);
+      background: #fefcf8;
+    }
+
+    .price-name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #153243;
+      margin-bottom: 0.5rem;
+    }
+
+    .price-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #b88b4a;
+      margin: 1rem 0 0.5rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .price-period {
+      color: #4f6779;
+      margin-bottom: 1.8rem;
+      font-size: 0.95rem;
+    }
+
+    .price-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+      text-align: left;
+    }
+
+    .price-features li {
+      margin: 0.8rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .price-features i {
+      color: #b88b4a;
+      width: 1.5rem;
+      text-align: center;
+    }
+
+    .price-card .btn {
+      width: 100%;
+    }
+
+    /* contact / запись */
+    .contact-section {
+      background: linear-gradient(145deg, #ffffff, #f3f8fd);
+    }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      background: white;
+      border-radius: 50px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.02);
+      border: 1px solid #eaf0f5;
+    }
+
+    .contact-info {
+      flex: 1 1 300px;
+    }
+
+    .contact-info h3 {
+      font-size: 1.8rem;
+      color: #153243;
+      margin-bottom: 1rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.8rem 0;
+      font-size: 1.1rem;
+    }
+
+    .contact-detail i {
+      width: 2.2rem;
+      height: 2.2rem;
+      background: #ebf2f8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b88b4a;
+      font-size: 1.2rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: #ebf2f8;
+      border-radius: 50%;
+      color: #1e3c4f;
+      font-size: 1.3rem;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      background: #b88b4a;
+      color: white;
+    }
+
+    .contact-form {
+      flex: 2 1 400px;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border: 1px solid #cbd7e4;
+      border-radius: 50px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1rem;
+      background: #fbfdff;
+    }
+
+    textarea {
+      border-radius: 30px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #b88b4a;
+      box-shadow: 0 0 0 3px rgba(184, 139, 74, 0.2);
+    }
+
+    .contact-form .btn {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+    }
+
+    /* footer */
+    footer {
+      background: #153243;
+      color: #cbd7e4;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    footer .container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    footer a {
+      color: #e9c99e;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-icon {
+        display: block;
+      }
+      .header-inner {
+        flex-wrap: wrap;
+      }
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .hero .container {
+        justify-content: center;
+        text-align: center;
+      }
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+      .btn-outline {
+        margin-left: 0;
+        margin-top: 0.8rem;
+      }
+      .photo-frame {
+        width: 240px;
+        height: 240px;
+      }
+      .photo-frame i {
+        font-size: 7rem;
+      }
+      .section-title {
+        font-size: 1.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .price-card.popular {
+        transform: scale(1);
+      }
+    }
+
+    /* псевдо-тренер */
+    .trainer-name-highlight {
+      background: #f5eee2;
+      padding: 0.1rem 0.4rem;
+      border-radius: 20px;
+      font-weight: 600;
+      color: #153243;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <div class="logo">♞ Лада Кляшева <span>| chess</span></div>
+      <nav class="nav-links">
+        <a href="#about">Обо мне</a>
+        <a href="#benefits">Преимущества</a>
+        <a href="#prices">Услуги</a>
+        <a href="#contact">Запись</a>
+      </nav>
+      <div class="mobile-menu-icon"><i class="fas fa-bars"></i></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero / главный экран -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Кляшева Лада Николаевна<br><span class="highlight">шахматы с нуля</span></h1>
+          <p class="hero-description">Индивидуальный подход к каждому ученику. Помогу полюбить шахматы и сделать первые уверенные шаги к победам.</p>
+          <div>
+            <a href="#contact" class="btn btn-primary">Записаться на пробный урок</a>
+            <a href="#about" class="btn btn-outline">Узнать больше</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">>150</div>
+              <div class="stat-label">учеников с нуля</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">12 лет</div>
+              <div class="stat-label">тренерского опыта</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">занятия с комфортом</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="photo-frame">
+            <i class="fas fa-chess-queen"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- О тренере (About) -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">О тренере</h2>
+        <div class="about-text">
+          <p><i class="fas fa-quote-left"></i> Меня зовут <strong>Лада Николаевна Кляшева</strong>. Я обучаю шахматам детей и взрослых с 2011 года. Моя специализация — работа с начинающими. Считаю, что шахматы доступны каждому, кто готов сделать первый ход.</p>
+          <p>✅ Кандидат в мастера спорта, многократный призёр городских турниров. Регулярно повышаю квалификацию на семинарах по детской педагогике. Мои ученики уже через 3 месяца участвуют в турнирах, а главное — получают радость от игры.</p>
+          <p>⭐️ Главный принцип — терпение, уважение к темпу ученика и живая подача материала. На занятиях мы не просто заучиваем дебюты, а учимся мыслить стратегически.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Преимущества (почему выбирают) -->
+    <section id="benefits" style="background: #f4f9ff;">
+      <div class="container">
+        <h2 class="section-title">Почему начинающие выбирают меня</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-child"></i></div>
+            <h3>Для любого возраста</h3>
+            <p>Занятия для детей от 5 лет и взрослых без ограничений. Учитываю возрастные особенности.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-puzzle-piece"></i></div>
+            <h3>Игровая форма</h3>
+            <p>Обучаю через мини-игры, красочные задания и шахматные сказки — никогда не бывает скучно.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-laptop-house"></i></div>
+            <h3>Очно и онлайн</h3>
+            <p>Встречи в уютном клубе или индивидуально онлайн на современных платформах.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+            <h3>Первые турниры</h3>
+            <p>Помогу подготовиться к любительским соревнованиям, научу справляться с волнением.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Услуги и цены -->
+    <section id="prices">
+      <div class="container">
+        <h2 class="section-title">Форматы занятий</h2>
+        <div class="prices-grid">
+          <!-- карточка 1 -->
+          <div class="price-card">
+            <div class="price-name">Индивидуально</div>
+            <div class="price-value">1800 ₽</div>
+            <div class="price-period">за 60 минут</div>
+            <ul class="price-features">
+              <li><i class="fas fa-check"></i> Полное внимание тренера</li>
+              <li><i class="fas fa-check"></i> Программа под ваш запрос</li>
+              <li><i class="fas fa-check"></i> Разбор партий</li>
+              <li><i class="fas fa-check"></i> Гибкое расписание</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline" style="margin:0;">Выбрать</a>
+          </div>
+          <!-- карточка 2 популярная (мини-группы) -->
+          <div class="price-card popular">
+            <div class="price-name">Мини-группа</div>
+            <div class="price-value">1000 ₽</div>
+            <div class="price-period">за 90 минут / чел.</div>
+            <ul class="price-features">
+              <li><i class="fas fa-check"></i> 2–4 человека одного уровня</li>
+              <li><i class="fas fa-check"></i> Живое общение, турниры</li>
+              <li><i class="fas fa-check"></i> Подходит детям и взрослым</li>
+              <li><i class="fas fa-check"></i> Скидка при оплате месяца</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary" style="margin:0;">Записаться</a>
+          </div>
+          <!-- карточка 3 -->
+          <div class="price-card">
+            <div class="price-name">Пробный урок</div>
+            <div class="price-value">500 ₽</div>
+            <div class="price-period">знакомство</div>
+            <ul class="price-features">
+              <li><i class="fas fa-check"></i> 40 минут индивидуально</li>
+              <li><i class="fas fa-check"></i> Оценка уровня</li>
+              <li><i class="fas fa-check"></i> Рекомендации по развитию</li>
+              <li><i class="fas fa-check"></i> Подарок: памятка по ходам</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline" style="margin:0;">Записаться</a>
+          </div>
+        </div>
+        <p style="text-align:center; margin-top:2rem; color:#4f6779;">* Возможны абонементы на 4 или 8 занятий со скидкой до 15% — уточните при записи.</p>
+      </div>
+    </section>
+
+    <!-- Контакты и форма записи -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2 class="section-title">Свяжитесь со мной</h2>
+        <div class="contact-container">
+          <div class="contact-info">
+            <h3>Лада Николаевна Кляшева</h3>
+            <p style="font-size:1.1rem; margin-bottom:1.8rem;">Отвечу на вопросы, помогу подобрать время и формат.</p>
+            <div class="contact-detail">
+              <i class="fas fa-phone-alt"></i>
+              <span>+7 (999) 123-45-67</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-envelope"></i>
+              <span>lada.chess@example.com</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>г. Казань, ул. Шахматная, д. 5 (шахматный клуб "Дебют")</span>
+            </div>
+            <div class="social-links">
+              <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+              <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form action="#" method="post">
+              <div class="form-group">
+                <input type="text" placeholder="Ваше имя" required>
+              </div>
+              <div class="form-group">
+                <input type="tel" placeholder="Телефон / WhatsApp" required>
+              </div>
+              <div class="form-group">
+                <select>
+                  <option>Выберите формат занятий</option>
+                  <option>Индивидуально (очно)</option>
+                  <option>Индивидуально (онлайн)</option>
+                  <option>Мини-группа</option>
+                  <option>Пробный урок</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <textarea rows="3" placeholder="Ваш возраст (если ребенок) и удобное время для связи..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane" style="margin-right:8px;"></i>Отправить заявку</button>
+            </form>
+            <p style="margin-top:1rem; font-size:0.9rem;">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025, Кляшева Лада Николаевна — тренер по шахматам для начинающих</p>
+      <p><i class="fas fa-chess-board"></i> Первый шаг к большой игре</p>
+      <p>Сайт создан в ознакомительных целях</p>
+    </div>
+  </footer>
+
+  <!-- небольшой скрипт для имитации мобильного меню (никакой логики, просто декорация) -->
+  <script>
+    document.querySelector('.mobile-menu-icon').addEventListener('click', function() {
+      alert('Навигация: Обо мне / Преимущества / Услуги / Запись. Сайт полностью адаптирован!');
+    });
+  </script>
+</body>
+</html>
