@@ -221,6 +221,29 @@
       color: white;
     }
 
+    /* Success message */
+    .success-message {
+      display: none;
+      background-color: #4CAF50;
+      color: white;
+      padding: 1rem;
+      border-radius: 50px;
+      text-align: center;
+      margin-bottom: 1rem;
+      animation: slideDown 0.5s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* Section general */
     section {
       padding: 4rem 0;
@@ -554,15 +577,6 @@
         transform: scale(1);
       }
     }
-
-    /* псевдо-тренер */
-    .trainer-name-highlight {
-      background: #f5eee2;
-      padding: 0.1rem 0.4rem;
-      border-radius: 20px;
-      font-weight: 600;
-      color: #153243;
-    }
   </style>
 </head>
 <body>
@@ -717,39 +731,55 @@
             </div>
             <div class="contact-detail">
               <i class="fas fa-envelope"></i>
-              <span>lada07k@gmail.com</span>
+              <span>gctomsk@gmail.com</span>
             </div>
             <div class="contact-detail">
               <i class="fas fa-map-marker-alt"></i>
               <span>г. Томск, ул. Ленина, д. 70 ("Городской шахматный клуб")</span>
             </div>
             <div class="social-links">
-              <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-              <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="https://t.me/kln_kaa" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+              <a href="https://wa.me/7996937038" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
               <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
+              <a href="https://vk.com/id795216259" aria-label="VK"><i class="fab fa-vk"></i></a>
             </div>
           </div>
           <div class="contact-form">
-            <form action="#" method="post">
+            <!-- Сообщение об успешной отправке -->
+            <div id="successMessage" class="success-message">
+              <i class="fas fa-check-circle"></i> Спасибо! Заявка отправлена. Я свяжусь с вами в ближайшее время.
+            </div>
+            
+            <!-- Форма с отправкой на FormSubmit -->
+            <form id="contactForm" action="https://formsubmit.co/gctomsk@gmail.com" method="POST">
+              <!-- Отключаем капчу -->
+              <input type="hidden" name="_captcha" value="false">
+              <!-- Тема письма -->
+              <input type="hidden" name="_subject" value="Новая заявка с сайта тренера по шахматам">
+              <!-- Перенаправление после отправки -->
+              <input type="hidden" name="_next" value="https://chess70.vercel.app/#contact">
+              <!-- Автоответ пользователю -->
+              <input type="hidden" name="_autoresponse" value="Спасибо за заявку! Я свяжусь с вами в ближайшее время.">
+              
               <div class="form-group">
-                <input type="text" placeholder="Ваше имя" required>
+                <input type="text" name="name" placeholder="Ваше имя" required>
               </div>
               <div class="form-group">
-                <input type="tel" placeholder="Телефон / WhatsApp" required>
+                <input type="tel" name="phone" placeholder="Телефон / WhatsApp" required>
               </div>
               <div class="form-group">
-                <select>
-                  <option>Выберите формат занятий</option>
-                  <option>Индивидуально (очно)</option>
-                  <option>Индивидуально (онлайн)</option>
-                  <option>Мини-группа</option>
-                  <option>Пробный урок</option>
+                <select name="format" required>
+                  <option value="">Выберите формат занятий</option>
+                  <option value="Индивидуально (очно)">Индивидуально (очно)</option>
+                  <option value="Индивидуально (онлайн)">Индивидуально (онлайн)</option>
+                  <option value="Мини-группа">Мини-группа</option>
+                  <option value="Пробный урок">Пробный урок</option>
                 </select>
               </div>
               <div class="form-group">
-                <textarea rows="3" placeholder="Ваш возраст (если ребенок) и удобное время для связи..."></textarea>
+                <textarea name="message" rows="3" placeholder="Ваш возраст (если ребенок) и удобное время для связи..." required></textarea>
               </div>
+              
               <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane" style="margin-right:8px;"></i>Отправить заявку</button>
             </form>
             <p style="margin-top:1rem; font-size:0.9rem;">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
@@ -767,8 +797,8 @@
     </div>
   </footer>
 
-  <!-- небольшой скрипт для имитации мобильного меню (никакой логики, просто декорация) -->
   <script>
+    // Мобильное меню
     document.querySelector('.mobile-menu-icon').addEventListener('click', function() {
       alert('Навигация: Обо мне / Преимущества / Услуги / Запись. Сайт полностью адаптирован!');
     });
